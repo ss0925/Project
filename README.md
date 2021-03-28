@@ -15,4 +15,5 @@
 보유 중
 ## 5. 1k Ohm 저항
 보유 중
-# 총 결제 긍액
+# 총 결제 금액
+![화면 캡처 2021-03-28 155829](https://user-images.githubusercontent.com/81162498/112744887-ddb3ec80-8fde-11eb-88cd-83b39ce5da30.jpg)
