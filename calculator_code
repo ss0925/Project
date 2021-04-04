@@ -1,3 +1,7 @@
+// 이 코드는 '숫자' 연산 '숫자' = '결과'의 형식으로만 이용가능합니다
+/* tm1637 모듈이 자동으로 3자리 이하는 마이너스 부호를 표시하지만 4자리 수에는 표시하지 못합니다.
+   그래서 따로 연결한 7 segment가 양수에는 led를 끄고 음수는 led를 켤 수 있게 했습니다.
+*/
 #include <Keypad.h>
 #include <Arduino.h>
 #include <TM1637Display.h>
@@ -21,11 +25,11 @@ byte rowPins[ROWS] = {9, 8, 7, 6}; //connect to the row pinouts of the keypad
 byte colPins[COLS] = {5, 4, 3, 2}; //connect to the column pinouts of the keypad
 
 
-double first =0;
-double second = 0;
-double result = 0;
-double aa = 0;
-char cal;
+double first =0;  //첫번째 숫자
+double second = 0;//두번째 숫자
+double result = 0;//결과
+double aa = 0;    //4자리수를 넘어가면 tm1637이 0000표시하도록 유도
+char cal;         //연산기호 저장
 
 
 Keypad customKeypad = Keypad( makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
@@ -41,12 +45,12 @@ void setup() {
 void loop() {
  customKey = customKeypad.getKey();
 
-  operation1();
-  dummy_calculate();
-  operation2();
-  calculate();
+  operation1();      //첫번째 수 입력
+  dummy_calculate(); //연산 기호 
+  operation2();      //두번째 수 입력
+  calculate();       //실제 연산
   
-  if(customKey == '#'){  // 등호 function
+  if(customKey == '#'){  // 등호 
     if(result> 9999 || result < -9999){
         result = 0;
         aa = true;
